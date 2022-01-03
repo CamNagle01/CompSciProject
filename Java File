@@ -1,0 +1,152 @@
+import java.util.Scanner;
+import java.util.Random;
+import java.util.ArrayList;
+public class deckofcards {
+	//Cameron Nagle
+	//11/18/2021
+	//This program shuffles a deck and deals as many cards as you want then if you want a new deck it will shuffle all the cards again
+	//define variables
+	Scanner reader = new Scanner(System.in);
+	Random rand = new Random();
+	ArrayList number = new ArrayList();
+	ArrayList shuffle = new ArrayList();
+	int upperbound = 52, decknum=52;
+	int int_random = rand.nextInt(upperbound);
+	//this method inputs all the cards
+	public void InputDeck() {
+		
+		number.add("Ace of Hearts");
+		number.add("Ace of Diamonds");
+		number.add("Ace of Spades");
+		number.add("Ace of Clubs");
+		number.add("Two of Hearts");
+		number.add("Two of Diamonds");
+		number.add("Two of Spades");
+		number.add("Two of Clubs");
+		number.add("Three of Hearts");
+		number.add("Three of Diamonds");
+		number.add("Three of Spades");
+		number.add("Three of Clubs");
+		number.add("Four of Hearts");
+		number.add("Four of Diamonds");
+		number.add("Four of Spades");
+		number.add("Four of Clubs");
+		number.add("Five of Hearts");
+		number.add("Five of Diamonds");
+		number.add("Five of Spades");
+		number.add("Five of Clubs");
+		number.add("Six of Hearts");
+		number.add("Six of Diamonds");
+		number.add("Six of Spades");
+		number.add("Six of Clubs");
+		number.add("Seven of Hearts");
+		number.add("Seven of Diamonds");
+		number.add("Seven of Spades");
+		number.add("Seven of Clubs");
+		number.add("Eight of Hearts");
+		number.add("Eight of Diamonds");
+		number.add("Eight of Spades");
+		number.add("Eight of Clubs");
+		number.add("Nine of Hearts");
+		number.add("Nine of Diamonds");
+		number.add("Nine of Spades");
+		number.add("Nine of Clubs");
+		number.add("Ten of Hearts");
+		number.add("Ten of Diamonds");
+		number.add("Ten of Spades");
+		number.add("Ten of Clubs");
+		number.add("Jack of Hearts");
+		number.add("Jack of Diamonds");
+		number.add("Jack of Spades");
+		number.add("Jack of Clubs");
+		number.add("Queen of Hearts");
+		number.add("Queen of Diamonds");
+		number.add("Queen of Spades");
+		number.add("Queen of Clubs");
+		number.add("King of Hearts");
+		number.add("King of Diamonds");
+		number.add("King of Spades");
+		number.add("King of Clubs");
+	}
+	
+	//this method calls the inputing deck method shuffles the deck then goes to the dealing method right after
+	
+	public void ShuffleDeck()
+	{
+		InputDeck();
+		String removed;
+		int x, length=52;
+		for(int i=0; i<52; i++) {
+		int_random = rand.nextInt(length);
+		x = int_random;
+		removed = (String) number.remove(x);
+		shuffle.add(removed);
+		length-=1;
+		}
+		DealsCards();
+	}
+	
+	//this method deals a card in the deck and asks what you want to do after
+	
+	public void DealsCards()
+	{
+		int choice=0, choice2=0;
+		String removed;
+		do{
+			do {
+		        System.out.println();
+				System.out.println("Enter in 1 for a card, 2 to print out how many cards left or 3 to be done with this deck");
+				choice=reader.nextInt();
+			switch(choice)
+			{
+			case 1:
+				removed = (String) shuffle.remove(0);
+				System.out.println();
+				System.out.println("Your card is the "+ removed);
+		        decknum-=1;
+		        System.out.println();
+			break;
+			case 2:
+				ReportCardsLeft();
+				break;
+			case 3:
+				break;
+			default:
+				System.out.println("Not a valid input try again");
+				break;
+			}
+		        
+		}while(choice!=1 && choice!=2 && choice!=3);
+	}while(choice!=3 && decknum>0);
+		System.out.println();
+		System.out.println("You are done");
+		
+		do {
+		System.out.println("Enter in 1 for another deck or 2 to be done with the code");
+		choice2=reader.nextInt();
+		switch(choice2) 
+		{
+		case 1:
+			decknum=52;
+		ShuffleDeck();
+		break;
+		case 2:
+			System.out.println();
+		break;
+		default:
+			System.out.println("Wrong input try again");
+		break;
+		}
+	}while(choice2!=2);	
+		
+		System.out.println("You are done with the code");
+	}
+	
+	//this method reports how many cards are left in the deck at any time
+	
+	public void ReportCardsLeft()
+	{
+		System.out.println();
+		System.out.println("There are "+ decknum +" cards left in the deck");
+	}
+}
