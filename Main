@@ -1,0 +1,14 @@
+import java.util.Scanner;
+public class deckofcardsmain {
+	//Cameron Nagle
+		//11/18/2021
+		//This program shuffles a deck and deals as many cards as you want then if you want a new deck it will shuffle all the cards again
+	public static void main(String[] args) {
+		
+		Scanner reader = new Scanner(System.in);
+		deckofcards mydeckofcards = new deckofcards();
+
+		mydeckofcards.ShuffleDeck();
+	}
+
+}
